@@ -145,6 +145,7 @@ def get_commit():
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         print(exc_type, fname, exc_tb.tb_lineno)
+        print(e)
         return jsonify({
             'success': False,
             'reason': str(e)
@@ -249,6 +250,7 @@ def watches():
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         print(exc_type, fname, exc_tb.tb_lineno)
+        print(e)
         return jsonify({
             'success': False,
             'reason': str(e)
@@ -307,6 +309,7 @@ def force_update(id):
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         print(exc_type, fname, exc_tb.tb_lineno)
+        print(e)
         return jsonify({
             'success': False,
             'reason': str(e)
@@ -369,7 +372,9 @@ def get_servers():
 def create_server():
     try:
         post_body = request.get_json()
-        post_body['port'] = str(allocate_port())
+        allocated_port = allocate_port()
+        print('Port {} allocated'.format(allocated_port))
+        post_body['port'] = str(allocated_port)
 
         h = hashlib.sha1()
         h.update(int_to_bytes(int(time.time() * 1000)))
@@ -406,6 +411,7 @@ def create_server():
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         print(exc_type, fname, exc_tb.tb_lineno)
+        print(e)
         return jsonify({
             'success': False,
             'reason': str(e)
