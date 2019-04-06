@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: registry
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: registry
+    spec:
+      containers:
+        - resources:
+          name: registry
+          image: registry:2
+          ports:
+            - name: registry-port
+              containerPort: 9405
+          volumeMounts:
+            - mountPath: /var/lib/registry
+              name: images
+      volumes:
+        - name: images
+          hostPath:
+            path: /root/registry/images
+      nodeSelector:
+        name: kubeserver-registry

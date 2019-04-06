@@ -1,0 +1,51 @@
+{
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Deployment",
+  "metadata": {
+    "labels": {
+      "service": "service"
+    },
+    "name": "deployment",
+    "namespace": "kubeserver"
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "labels": {
+          "name": "selector"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "env": [
+              {
+                "name": "REPO_VER",
+                "value": "initial"
+              }
+            ],
+            "image": ":latest",
+            "name": "container",
+            "ports": [
+              {
+                "name": "port",
+                "containerPort": 1111,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "250m",
+                "memory": "128Mi"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
