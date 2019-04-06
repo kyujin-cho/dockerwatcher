@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    include ../head.pug
+  body
+    .wrapper
+      .sidebar(data-color="purple", data-background-color="white", data-image="/static/images/sitebar-1.jpg")
+        .logo
+          a.simple-text.logo-normal(href="/") Dockerwatcher
+        .sidebar-wrapper 
+      .main-panel
+        nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
+          .container-fluid
+            .navbar-wrapper
+              a.navbar-brand(href="#") O-O-P-S
+        .content
+          .container-fluid
+            .row
+              .col-md-12
+                h1 OOPS! Looks like you're not logged in.
+              .col-md-12
+                h3 Click button below to navigate to log in page.
+              .col-md-12
+                a(href="/login")
+                  button.btn.btn-success(type="button") Log In

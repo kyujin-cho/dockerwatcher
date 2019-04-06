@@ -1,0 +1,17 @@
+.sidebar(data-color="purple", data-background-color="white", data-image="/static/images/sitebar-1.jpg")
+  .logo
+    a.simple-text.logo-normal(href="/") Dockerwatcher
+  .sidebar-wrapper
+    ul.nav
+      li.nav-item
+        a.nav-link(href="/watches")
+          i.material-icons dashboard
+          p Watches
+      li.nav-item
+        a.nav-link(href="/watches/new")
+          i.material-icons dashboard
+          p New Server
+      li.nav-item
+        a#do-logout.nav-link(href="/logout") 
+          i.material-icons lock
+          p Logout

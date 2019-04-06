@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    include ../head.pug
+    script(src="/static/javascripts/watcher.js")
+  body
+    .wrapper
+      include ../sidebar.pug
+      .main-panel
+        nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
+          .container-fluid
+            .navbar-wrapper
+              a.navbar-brand(href="#") Deployment Details
+            button.navbar-toggler(type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation")
+              span.sr-only Toggle navigation
+              span.navbar-toggler-icon.icon-bar
+              span.navbar-toggler-icon.icon-bar
+              span.navbar-toggler-icon.icon-bar
+        .content
+          .container-fluid
+            .row
+              .col-md-12
+                button#refresh-btn.btn.btn-success(type="button") Refresh
+                button#remove-deploy-btn.btn.btn-danger(type="button") Remove Deployment
+              .col-md-12
+                .card.card-stats
+                  .card-header.card-header-warning.card-header-icon
+                    .card-icon
+                      i.material-icons label
+                    p.card-category Server Name
+                    h3.card-title= server.name
+                  .card-footer
+                    .stats
+              .col-md-12
+                .card.card-stats
+                  .card-header.card-header-warning.card-header-icon
+                    .card-icon
+                      i.material-icons http
+                    p.card-category Repository URL
+                    h3.card-title= server.repopath
+                  .card-footer
+                    .stats
+                      i.material-icons arrow_forward
+                      a(href=server.repopath) Go to repository
+              .col-md-6
+                .card.card-stats
+                  .card-header.card-header-warning.card-header-icon
+                    .card-icon
+                      i.material-icons computer
+                    p.card-category Target Platform
+                    h3.card-title= server.target
+                  .card-footer
+                    .stats
+              .col-md-6
+                .card.card-stats
+                  .card-header.card-header-warning.card-header-icon
+                    .card-icon
+                      i.material-icons meeting_room
+                    p.card-category Exposed Port
+                    h3.card-title= server.port
+                  .card-footer
+                    .stats
+              .col-md-12
+                .card.card-stats
+                  .card-header.card-header-warning.card-header-icon
+                    .card-icon
+                      i.material-icons settings
+                    p.card-category Environment Variables
+                    h3.card-title= server.environment
+                  .card-footer
+                    .stats

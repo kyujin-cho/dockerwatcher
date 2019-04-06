@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    include ../head.pug
+  body
+    .wrapper
+      include ../sidebar.pug
+      .main-panel
+        nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
+          .container-fluid
+            .navbar-wrapper
+              a.navbar-brand(href="#") Watches
+            button.navbar-toggler(type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation")
+              span.sr-only Toggle navigation
+              span.navbar-toggler-icon.icon-bar
+              span.navbar-toggler-icon.icon-bar
+              span.navbar-toggler-icon.icon-bar
+        .content
+          .container-fluid
+            .row
+              .col-md-12
+                .card.card-plain
+                  .card-header.card-header-primary
+                    h4.card-title.mt-0 Server List
+                    //- p.card-category  Here is a subtitle for this table
+                  .card-body
+                    .table-responsive
+                      table.table.table-hover#watches
+                        thead
+                          th #
+                          th Name
+                          th Target Environment
+                          th Repo URL
+                        tbody
+                          each val, index in servers
+                            tr
+                              td= index+1
+                              td
+                                a(href="/watches/" + val._id) #{val.name}
+                              td= val.target
+                              td
+                                a(href=val.repopath) #{val.repopath}

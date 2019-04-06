@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    include ../head.pug
+    script(src="/static/javascripts/login.js")
+  body
+    .wrapper
+      .sidebar(data-color="purple", data-background-color="white", data-image="/static/images/sitebar-1.jpg")
+        .logo
+          a.simple-text.logo-normal(href="/") Dockerwatcher
+        .sidebar-wrapper 
+      .main-panel
+        nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
+          .container-fluid
+            .navbar-wrapper
+              a.navbar-brand(href="#") Log In
+        .content
+          .container-fluid
+            .card
+              .card-header.card-header-primary
+                h4.card-title Enter Credentials
+              .card-body
+                .row
+                  .col-md-12
+                    .form-group
+                      label.bmd-label-floating Username
+                      input#username.form-control(type="email")
+                  .col-md-12
+                    .form-group
+                      label.bmd-label-floating Password
+                      input#password.form-control(type="password")
+                  .col-md-12
+                    button#login-btn.btn.btn-success(type="button") GO

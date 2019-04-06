@@ -1,0 +1,25 @@
+body {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+header {
+    background-color: #212121 !important;
+}
+
+.page-content {
+    margin-left: 10px;
+}
+
+div.row#error-row {
+    display: none;
+}
+
+div.row.show-error#error-row {
+    display: block;
+}
+
+div.row#error-row span {
+    color: red;
+}
