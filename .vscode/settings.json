@@ -1,0 +1,4 @@
+{
+  "python.pythonPath": "watcher/bin/python",
+  "python.linting.pylintEnabled": true
+}
