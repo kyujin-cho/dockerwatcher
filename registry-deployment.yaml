@@ -1,7 +1,10 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  labels:
+    service: registry-service #Name of service
   name: registry
+  namespace: kubeserver
 spec:
   replicas: 1
   template:

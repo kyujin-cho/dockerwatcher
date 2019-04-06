@@ -2,15 +2,15 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    service: mysqlauth-service #Name of service
-  name: mysqlauth-deployment #Name of deployment
-  namespace: production-cloud
+    service: mysql-service #Name of service
+  name: mysql-deployment #Name of deployment
+  namespace: kubeserver
 
 spec:
   template:
     metadata:
       labels:
-        name: mysqlauth-selector #Name of selector
+        name: mysql-selector #Name of selector
     spec:
       containers:
         - env:
@@ -20,9 +20,9 @@ spec:
               value: admin
 
           image: mysql:latest
-          name: mysqlauth-container
+          name: mysql-container
           ports:
-            - name: mysqlauth-port
+            - name: mysql-port
               containerPort: 3306
               protocol: TCP
 
