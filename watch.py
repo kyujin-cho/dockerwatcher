@@ -33,11 +33,11 @@ PORT_POOL_END = 30000
 MAX_PORT_ALLOCATION_TRIES = 300
 
 if 'PORT_POOL_START' in os.environ.keys() and 'PORT_POOL_END' in os.environ.keys():
-    PORT_POOL_START = os.environ['PORT_POOL_START']
-    PORT_POOL_END = os.environ['PORT_POOL_END']
+    PORT_POOL_START = int(os.environ['PORT_POOL_START'])
+    PORT_POOL_END = int(os.environ['PORT_POOL_END'])
 
 if 'MAX_PORT_ALLOCATION_TRIES' in os.environ.keys():
-    MAX_PORT_ALLOCATION_TRIES = os.environ['MAX_PORT_ALLOCATION_TRIES']
+    MAX_PORT_ALLOCATION_TRIES = int(os.environ['MAX_PORT_ALLOCATION_TRIES'])
 
 if 'SERVER_PORT' in os.environ.keys():
     SERVER_PORT = int(os.environ['SERVER_PORT'])
