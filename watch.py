@@ -466,5 +466,7 @@ def parse_container_by_image_name(image_name):
 
     output = run_with_exception('docker rm {}'.format(image_name))
 if __name__ == "__main__":
+    print('Dockerwatcher server is now running on port 5000.')
+    print('Dockerwatcher user can be created by POSTing to /api/newuser on localhost. POST body should be formed like {"username": "YOURUSER", "password": "YOURPASSWORD"}.')
     app.run('0.0.0.0')
 
