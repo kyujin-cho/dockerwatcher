@@ -7,12 +7,12 @@ import subprocess
 import json
 import yaml
 import ninjadog
-import os
 import hashlib
 import time
 import flask_login
 import random
 import re
+import sys
 from flask_login import UserMixin, LoginManager, login_required
 
 app = flask.Flask(__name__)
@@ -142,7 +142,9 @@ def get_commit():
             'success': True
         })
     except Exception as e:
-        print(e)
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print(exc_type, fname, exc_tb.tb_lineno)
         return jsonify({
             'success': False,
             'reason': str(e)
@@ -244,7 +246,9 @@ def watches():
         else:
             return create_server()
     except Exception as e:
-        print(e)
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print(exc_type, fname, exc_tb.tb_lineno)
         return jsonify({
             'success': False,
             'reason': str(e)
@@ -300,7 +304,9 @@ def force_update(id):
         else:
             raise Exception('No such data')
     except Exception as e:
-        print(e)
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print(exc_type, fname, exc_tb.tb_lineno)
         return jsonify({
             'success': False,
             'reason': str(e)
@@ -363,7 +369,7 @@ def get_servers():
 def create_server():
     try:
         post_body = request.get_json()
-        post_body['port'] = allocate_port()
+        post_body['port'] = str(allocate_port())
 
         h = hashlib.sha1()
         h.update(int_to_bytes(int(time.time() * 1000)))
@@ -397,7 +403,9 @@ def create_server():
             'data': str(data.inserted_id)
         })
     except Exception as e:
-        print(e)
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print(exc_type, fname, exc_tb.tb_lineno)
         return jsonify({
             'success': False,
             'reason': str(e)
