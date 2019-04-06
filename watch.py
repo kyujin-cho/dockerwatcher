@@ -25,6 +25,8 @@ db = client['dockerserve']
 collection = db['repositories']
 users = db['users']
 
+SERVER_PORT = 5000
+
 PORT_POOL_START = 20000
 PORT_POOL_END = 30000
 
@@ -36,6 +38,9 @@ if 'PORT_POOL_START' in os.environ.keys() and 'PORT_POOL_END' in os.environ.keys
 
 if 'MAX_PORT_ALLOCATION_TRIES' in os.environ.keys():
     MAX_PORT_ALLOCATION_TRIES = os.environ['MAX_PORT_ALLOCATION_TRIES']
+
+if 'SERVER_PORT' in os.environ.keys():
+    SERVER_PORT = int(os.environ['SERVER_PORT'])
 
 DOCKERFILE = {}
 ports = {
@@ -466,7 +471,7 @@ def parse_container_by_image_name(image_name):
 
     output = run_with_exception('docker rm {}'.format(image_name))
 if __name__ == "__main__":
-    print('Dockerwatcher server is now running on port 5000.')
+    print('Dockerwatcher server is now running on port {}.'.format(SERVER_PORT))
     print('Dockerwatcher user can be created by POSTing to /api/newuser on localhost. POST body should be formed like {"username": "YOURUSER", "password": "YOURPASSWORD"}.')
-    app.run('0.0.0.0')
+    app.run('0.0.0.0', port=SERVER_PORT)
 
