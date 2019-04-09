@@ -20,7 +20,8 @@ html(lang="en")
           .container-fluid
             .row
               .col-md-12
-                button#refresh-btn.btn.btn-success(type="button") Refresh
+                if server.type == 'git'
+                  button#refresh-btn.btn.btn-success(type="button") Refresh
                 button#remove-deploy-btn.btn.btn-danger(type="button") Remove Deployment
               .col-md-12
                 .card.card-stats
@@ -42,7 +43,7 @@ html(lang="en")
                     .stats
                       i.material-icons arrow_forward
                       a(href=server.repopath) Go to repository
-              .col-md-6
+              .col-md-4
                 .card.card-stats
                   .card-header.card-header-warning.card-header-icon
                     .card-icon
@@ -51,13 +52,25 @@ html(lang="en")
                     h3.card-title= server.target
                   .card-footer
                     .stats
-              .col-md-6
+              .col-md-4
                 .card.card-stats
                   .card-header.card-header-warning.card-header-icon
                     .card-icon
                       i.material-icons meeting_room
                     p.card-category Exposed Port
                     h3.card-title= server.port
+                  .card-footer
+                    .stats
+              .col-md-4
+                .card.card-stats
+                  .card-header.card-header-warning.card-header-icon
+                    .card-icon
+                      i.material-icons meeting_room
+                    p.card-category Server Running
+                    if server.running
+                      h3.card-title True
+                    else
+                      h3.card-title False
                   .card-footer
                     .stats
               .col-md-12
@@ -67,5 +80,15 @@ html(lang="en")
                       i.material-icons settings
                     p.card-category Environment Variables
                     h3.card-title= server.environment
+                  .card-footer
+                    .stats
+              
+              .col-md-12
+                .card.card-stats
+                  .card-header.card-header-warning.card-header-icon
+                    .card-icon
+                      i.material-icons settings
+                    p.card-category Server Logs
+                    p.card-title(style="white-space: pre;text-align: left;margin-top: 50px;")= server.logs
                   .card-footer
                     .stats
