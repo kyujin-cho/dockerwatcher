@@ -515,7 +515,7 @@ def update_image_local(file, server_name, target):
         output = run_with_exception('unzip {} -d {}'.format(filename + '.' + extension, image_name), cwd='tmp/')
     elif extension == 'tar' or extension == 'TAR':
         os.mkdir('tmp/' + image_name)
-        output = run_with_exception('tar -xvf {}'.format(file_dir), cwd='tmp/' + image_name)
+        output = run_with_exception('tar -xvf ../{}'.format(filename + '.' + extension), cwd='tmp/' + image_name)
 
     Dockerfile = DOCKERFILE[target]
 
