@@ -39,4 +39,7 @@ html(lang="en")
                                 a(href="/watches/" + val._id) #{val.name}
                               td= val.target
                               td
-                                a(href=val.repopath) #{val.repopath}
+                                if val.type == 'git'
+                                  a(href=val.repopath) #{val.repopath}
+                                else
+                                  span Local Archive

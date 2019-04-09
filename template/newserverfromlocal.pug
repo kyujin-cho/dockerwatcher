@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    include ../head.pug
+    script(src="/static/javascripts/new_watcher_from_local.js")
+  body
+    .wrapper
+      include ../sidebar.pug
+      .main-panel
+        nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
+          .container-fluid
+            .navbar-wrapper
+              a.navbar-brand(href="#") Watches
+            button.navbar-toggler(type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation")
+              span.sr-only Toggle navigation
+              span.navbar-toggler-icon.icon-bar
+              span.navbar-toggler-icon.icon-bar
+              span.navbar-toggler-icon.icon-bar
+        .content
+          .container-fluid
+            .row
+              .col-md-12
+                .card
+                  .card-header.card-header-primary
+                    h4.card-title New Server
+                  .card-body
+                    .row
+                      .col-md-3
+                        label Archive File (zip or tar only, max 10MB)
+                      .col-md-9
+                        input#archive(type="file", name="archive")
+                    .row
+                      .col-md-6
+                        .form-group
+                          label.bmd-label-floating Server Name
+                          input#server-name.form-control(type="text")
+                      .col-md-2
+                        .form-group#server-port-form-group
+                          label.bmd-label-floating Server Port
+                          input#server-port.form-control(type="text", disabled="")
+                      .col-md-4
+                        p(style="line-height: 4;") exposed to randomly generated port
+                      
+                    .row
+                      .col-md-6
+                        .form-group
+                          label(for="target-env") Target environment
+                          select#target-env.form-control.selectpicker(data-style="btn btn-link", onchange="onTargetEnvSelectChange()")
+                            option(value="") ---
+                            option(value="node") Node.js
+                            option(value="flask") Python Flask
+                    .row
+                      .col-md-12
+                        .form-group
+                          label Enviroment Variables
+                          .form-group
+                            label.bmd-label-floating Set additional environment vars if needed. Multiple envs should be seperated by ;(colon).
+                            textarea#env.form-control(rows="5")
+                    .row#error-row
+                      .col-md-12
+                        span Error
+                    button#deploy-server-btn.btn.btn-primary.pull-right Deploy
+                    .clearfix

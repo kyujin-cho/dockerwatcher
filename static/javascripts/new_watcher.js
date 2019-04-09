@@ -37,7 +37,8 @@ window.onload = () => {
       name: serverName,
       repopath: url,
       target: platform,
-      environment: envVars
+      environment: envVars,
+      deployType: 'git'
     })
     .then((res) => {
       if (res.data.success) {
